@@ -15,7 +15,7 @@
 <p align="center">
   <a href="https://github.com/SenjuWoo/BDO-TEX-AIO/actions/workflows/ci.yml"><img src="https://github.com/SenjuWoo/BDO-TEX-AIO/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-c9a227?labelColor=0c0f12" alt="MIT License"></a>
-  <a href="https://github.com/SenjuWoo/BDO-TEX-AIO/releases/tag/v1.5.1"><img src="https://img.shields.io/badge/release-v1.5.1-d4af37?labelColor=0c0f12" alt="v1.5.1"></a>
+  <a href="https://github.com/SenjuWoo/BDO-TEX-AIO/releases/latest"><img src="https://img.shields.io/github/v/release/SenjuWoo/BDO-TEX-AIO?label=release&color=d4af37" alt="latest release"></a>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <a href="CHANGELOG.md">Changelog</a>
 </p>
 
-Double-click **`START.bat`**. Latest release: [v1.5.1](https://github.com/SenjuWoo/BDO-TEX-AIO/releases/tag/v1.5.1).
+Double-click **`START.bat`**. Latest release: [v1.5.1](https://github.com/SenjuWoo/BDO-TEX-AIO/releases/latest).
 
 This git tree has no application screenshot. The UI is the `START.bat` / `bdo_tex.ps1` console menu.
 
