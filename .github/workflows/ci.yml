@@ -82,3 +82,13 @@ jobs:
           } else {
             Write-Host "No Python files found; skipping."
           }
+
+      - name: Python self-tests (filter, collision and blank-output guards)
+        shell: pwsh
+        run: |
+          python -m pip install --disable-pip-version-check --quiet pillow numpy
+          if ($LASTEXITCODE -ne 0) { throw "pip install failed." }
+          python -B tools/test_bdo_tex.py
+          if ($LASTEXITCODE -ne 0) { throw "test_bdo_tex.py failed." }
+          python -B tools/test_body_mats.py
+          if ($LASTEXITCODE -ne 0) { throw "test_body_mats.py failed." }

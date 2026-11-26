@@ -309,9 +309,18 @@ def collect_from_files_to_patch(ftp: Path) -> tuple[list[Path], dict[str, str], 
     return paths, layer_of, f"files_to_patch ({len(paths)} winning body dds, {layers_seen} layers)"
 
 
+def _aio_root(cfg: dict) -> Path | None:
+    """The configured BDO-AIO folder, or None when bdoAioRoot is blank.
+
+    A blank value must not become Path("") - that is the current directory.
+    """
+    value = str(cfg.get("bdoAioRoot") or "").strip()
+    return Path(value) if value else None
+
+
 def collect_from_aio_fallback(cfg: dict) -> list[Path]:
-    root = Path(cfg["bdoAioRoot"])
-    if not root.is_dir():
+    root = _aio_root(cfg)
+    if root is None or not root.is_dir():
         return []
     found: list[Path] = []
     for pattern in cfg.get("sourceGlobs") or []:
@@ -742,8 +751,9 @@ def cmd_stage(cfg: dict, args) -> int:
     dest_root = ftp / layer
 
     # Hard rule: never write under BDO-AIO install
-    aio_root = Path(cfg.get("bdoAioRoot") or "").resolve()
-    if aio_root.is_dir():
+    aio_root = _aio_root(cfg)
+    aio_root = aio_root.resolve() if aio_root is not None else None
+    if aio_root is not None and aio_root.is_dir():
         try:
             dest_root.resolve().relative_to(aio_root)
             die(f"refusing to stage inside BDO-AIO install: {dest_root}")

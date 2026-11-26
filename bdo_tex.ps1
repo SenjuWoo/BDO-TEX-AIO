@@ -13,7 +13,7 @@ param()
 $ErrorActionPreference = 'Stop'
 $AppRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $Cli     = Join-Path $AppRoot 'tools\bdo_tex.py'
-$Version = '1.5.0'
+$Version = '1.5.2'
 
 function Resolve-Python {
     foreach ($c in @('python', 'py')) {

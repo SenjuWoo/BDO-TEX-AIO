@@ -3,6 +3,27 @@
 All notable changes to BDO-TEX-AIO. Format: Keep a Changelog, versions
 semantic. Release zips on GitHub always match the tagged commit.
 
+## [1.5.2] - 2026-11-25
+
+### Fixed
+- `config.example.json` shipped a fixed home-folder path as `bdoAioRoot`; it is now
+  blank, and a blank `bdoAioRoot` means "not set" instead of silently becoming the
+  folder the tool runs from (pack fallback and the stage-inside-BDO-AIO guard).
+  Existing `config.json` files are untouched.
+- The console menu reported v1.5.0; it now reports the release version.
+
+### Added
+- Self-test `test_blank_aio_root_is_not_the_current_folder` and a check that the
+  shipped example config carries no home-folder path.
+- CI now runs both self-test scripts (`tools/test_bdo_tex.py`,
+  `tools/test_body_mats.py`), not only a Python compile check.
+
+### Changed
+- README rebuilt around a cover image and a captured self-test run; the menu table
+  now lists `S` (status), `V` (self-tests) and `Q` (quit), and the CLI subcommands
+  are documented. README images live in `docs/presentation/` and are excluded from
+  `git archive` release zips.
+
 ## [1.5.1] - 2026-08-19
 
 ### Added
